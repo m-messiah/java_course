@@ -1,0 +1,64 @@
+  
+public final class Vector3D implements iVector {
+ private Double m_x, m_y, m_z;
+public Vector3D() {
+ m_x = 0.0;
+ m_y = 0.0;
+ m_z = 0.0;
+ }
+public Vector3D(double x, double y, double z) {
+ m_x = x;
+ m_y = y;
+ m_z = z;
+ }
+// Получение координат
+ public double getComponent(int i) {
+ switch (i) {
+ case 0:
+ return m_x;
+ case 1:
+ return m_y;
+ case 2:
+ return m_z;
+ default:
+ return 0;
+ }
+ }
+// Операции
+ public int dimension() {
+ return 3;
+ }
+public double scalar(iVector v) // скалярное произведение векторов
+ {
+ return v.getComponent(0) * m_x + v.getComponent(1) * m_y
+ + v.getComponent(2) * m_z;
+ }
+public double len() // длина вектора
+ {
+ return Math.sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+ }
+public Vector3D multiply(double factor) // умножение на число
+ {
+ return new Vector3D(m_x * factor, m_y * factor, m_z * factor);
+ }
+public Vector3D add(iVector v) // сложение векторов
+ {
+ return new Vector3D(m_x + v.getComponent(0), m_y + v.getComponent(1),
+ m_z + v.getComponent(2));
+ }
+public Vector3D sub(iVector v) // вычитание векторов
+ {
+ return new Vector3D(m_x - v.getComponent(0), m_y - v.getComponent(1),
+ m_z - v.getComponent(2));
+ }
+public void printV() // Выдача на экран
+ {
+ System.out.println("(" + m_x + ", " + m_y + ", " + m_z + ")");
+ }
+// public static void main (String args[]) {
+ // Vector3D a= new Vector3D(1,1,1);
+ // Vector3D b = new Vector3D(1,0,0);
+ // Vector3D temp;
+ // temp=a.sub(b);
+ // temp.printV(); }
+ }
